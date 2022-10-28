@@ -5,7 +5,6 @@ export const addResponseToSurvey = async (surveyId: string, surveyResponse: ISur
     if (!survey) {
         throw 404;
     }
-
     survey.response = surveyResponse;
     return survey;
 }
