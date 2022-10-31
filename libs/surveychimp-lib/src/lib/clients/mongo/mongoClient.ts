@@ -1,7 +1,10 @@
 
 import mongoose from 'mongoose';
 
-export const connect = async (): Promise<typeof mongoose> => {;
-    if (!process.env.MONGO_CONNECTION_STRING) { throw new Error ('MONGO_CONNECTION_STRING is not set'); }
-    return mongoose.connect(process.env.MONGO_CONNECTION_STRING);
+export const connect = async (): Promise<typeof mongoose> => {
+    console.log('DATABASE_URL', process.env.DATABASE_URL)
+    if (!process.env.DATABASE_URL) {
+        throw "400";
+    }
+    return mongoose.connect(process.env.DATABASE_URL);
 }
